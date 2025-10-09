@@ -39,11 +39,7 @@ export class Heroes implements OnInit {
       this.firstName?.markAsDirty()
       return
     }
-    const newHero: Hero = { 
-      id: this.inMemoryDataService.genId(this.heroes), 
-      firstName:  this.firstName?.value! 
-    }
-    this.heroService.addHero(newHero)
+    this.heroService.addHero({ firstName: this.firstName?.value! } as Hero)
       .subscribe(hero => {
         this.firstName?.setValue('')
         this.addHeroForm.reset();
