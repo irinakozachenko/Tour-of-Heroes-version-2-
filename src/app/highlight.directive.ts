@@ -7,12 +7,8 @@ export class HighlightDirective {
   private el = inject(ElementRef)
   appHighlight = input('');
 
-  constructor() { 
-    this.el.nativeElement.style.backgroundColor = 'yellow';
-  }
-
   @HostListener('mouseenter') onMouseEnter() {
-    this.highlight(this.appHighlight() || 'red');
+    this.highlight(this.appHighlight());
   }
 
   @HostListener('mouseleave') onMouseLeave() {

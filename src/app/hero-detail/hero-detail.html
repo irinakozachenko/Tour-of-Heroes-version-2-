@@ -1,9 +1,7 @@
 <div *ngIf="hero">
-    <h2>{{hero.firstName | uppercase}} Details</h2>
+  <h2>{{hero.firstName | uppercase}} Details</h2>
   <form [formGroup]="heroForm" (ngSubmit)="save()">
-    <div><span>id: </span>{{hero.id}}</div>
-
-    <div>
+    <div class="block">
       <label for="first-name">First name </label>
       <input id="first-name" type="text" formControlName="firstName">
       <span class="error" *ngIf="heroForm.get('firstName')?.hasError('required')">
@@ -14,12 +12,12 @@
       </span>
     </div>
 
-    <div>
+    <div class="block">
       <label for="last-name">Last name </label>
       <input id="last-name" type="text" formControlName="lastName">
     </div>
 
-    <div>
+    <div class="block">
       <label for="age">Age </label>
       <input id="age" type="number" formControlName="age">
       <span class="error" *ngIf="heroForm.get('age')?.hasError('ageRange')">
@@ -27,24 +25,12 @@
       </span>
     </div>
 
-    <div>
+    <div class="block">
       <label for="merried">Merried </label>
       <input id="merried" type="checkbox" formControlName="merried">
     </div>
 
-    <div formGroupName="address">
-      <p>Address</p>
-      <div>
-        <label for="city">City </label>
-        <input id="city" type="text" formControlName="city">
-      </div>
-      <div>
-        <label for="street">Street </label>
-        <input id="street" type="text" formControlName="street">
-      </div>
-    </div>
-
-    <div class="radio-group">
+    <div class="radio-group block">
       <label for="gender">Gender </label>
       <label>
         <input type="radio" formControlName="gender" value="Female"> {{ HeroGenderEnum.Female }}
@@ -54,12 +40,24 @@
       </label>
     </div>
 
-    <div>
+    <div class="block">
       <label for="email">Email </label>
       <input id="email" type="text" formControlName="email">
       <span class="error" *ngIf="heroForm.get('email')?.hasError('email')">
         * Please provide a valid email address 
       </span> 
+    </div>
+
+    <div class="block" formGroupName="address">
+      <h3>Address</h3>
+      <div class="block">
+        <label for="city">City </label>
+        <input id="city" type="text" formControlName="city">
+      </div>
+      <div class="block">
+        <label for="street">Street </label>
+        <input id="street" type="text" formControlName="street">
+      </div>
     </div>
 
     <button type="button" (click)="goBack()">back</button>

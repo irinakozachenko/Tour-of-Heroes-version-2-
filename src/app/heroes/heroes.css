@@ -66,6 +66,7 @@ input {
  padding: .5rem 1.5rem;
  font-size: 1rem;
  margin-bottom: 2rem;
+ margin-top: 15px;
 }
 
 .add-button:hover {
@@ -99,4 +100,16 @@ button.delete:hover {
   border: 1px solid grey;
   padding: 15px;
   padding-bottom: 0;
+
+  .control--firstName {
+    margin-bottom: 0;
+  }
+
+  .error--firstName {
+    display: block;
+  }
+}
+
+.error {
+  color: red;
 }

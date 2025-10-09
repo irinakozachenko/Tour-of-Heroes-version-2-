@@ -3,7 +3,7 @@ export enum HeroGenderEnum {
     Male = 'Male'
 }
 
-export enum CaseEnum {
+export enum LetterCaseEnum {
     Uppercase = 'Uppercase',
     Lowercase = 'Lowercase'
 }

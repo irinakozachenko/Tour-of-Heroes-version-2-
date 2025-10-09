@@ -2,18 +2,21 @@
 
 <div class="test-output-block">
   <h3>Test component output properties </h3>
-  <app-test-output (addItemEvent)="addItem($event)"/>
+  <app-test-output-property (addItemEvent)="addItem($event)"/>
   <p>🐢 all the way down {{ items.length }}</p>
 </div>
 
-<div class="add-hero-block">
-  <label for="new-hero">Hero name: </label>
-  <input id="new-hero" #heroName/>
+<form [formGroup]="addHeroForm" (ngSubmit)="addHero()" class="add-hero-block">
+  <label for="firstName">Hero name </label>
+  <input id="firstName" formControlName="firstName" class="control--firstName"/>
+  <span class="error error--firstName" *ngIf="(firstName?.invalid && (firstName?.dirty || firstName?.touched)) && firstName?.hasError('required')">
+    * First Name is required
+  </span>
 
-  <button type="button" class="add-button" (click)="addHero(heroName.value);heroName.value=''">
+  <button type="submit" class="add-button">
     Add hero
   </button>
-</div>
+</form>
 
 <ul class="heroes">
   <li *ngFor="let hero of heroes">

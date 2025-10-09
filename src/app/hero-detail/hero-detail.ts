@@ -5,7 +5,7 @@ import { NgIf, UpperCasePipe, Location } from '@angular/common';
 import { HeroService } from '../hero.service';
 import { UIRouterModule } from "@uirouter/angular";
 import { HeroGenderEnum } from '../hero.const';
-import { ageRangeValidator } from '../ageRange.validator ';
+import { ageRangeValidator } from '../ageRange.validator';
 
 @Component({
   selector: 'app-hero-detail',
@@ -19,9 +19,7 @@ export class HeroDetail implements OnInit{
   heroForm!: FormGroup
   HeroGenderEnum = HeroGenderEnum
 
-  constructor(private heroService: HeroService, private location: Location,
-    private formBuilder: FormBuilder
-  ) {}
+  constructor(private heroService: HeroService, private location: Location, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.getHero();
@@ -57,6 +55,7 @@ export class HeroDetail implements OnInit{
         street: this.heroForm.value.address?.street
       };
       this.hero.gender = this.heroForm.value.gender;
+      this.hero.email = this.heroForm.value.email;
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
     }

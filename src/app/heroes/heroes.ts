@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { HeroService } from '../hero.service';
 import { UIRouterModule } from "@uirouter/angular";
-import { TestOutput } from '../test-output/test-output';
+import { TestOutputProperty } from '../test-output/test-output-property';
+import { InMemoryDataService } from '../in-memory-data';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-heroes',
-  imports: [NgFor, UIRouterModule, TestOutput],
+  imports: [NgFor, UIRouterModule, TestOutputProperty, ReactiveFormsModule, NgIf],
   templateUrl: './heroes.html',
   styleUrl: './heroes.css',
 })
@@ -15,11 +17,20 @@ export class Heroes implements OnInit {
   heroes: Hero[] = [];
   selectedHero?: Hero;
   items = new Array();
+  addHeroForm = new FormGroup({
+    firstName: new FormControl('', Validators.required)
+  })
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService, private inMemoryDataService: InMemoryDataService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.getHeroes();
+  }
+
+  get firstName() {
+    return this.addHeroForm.get('firstName');
   }
 
   getHeroes(): void {
@@ -27,12 +38,19 @@ export class Heroes implements OnInit {
       .subscribe(heroes => this.heroes = heroes)
   }
 
-  addHero(name: string): void {
-    name = name.trim();
-    if (!name) 
+  addHero(): void {
+    if (!this.addHeroForm.valid) {
+      this.firstName?.markAsDirty()
       return
-    this.heroService.addHero({} as Hero)
+    }
+    const newHero: Hero = { 
+      id: this.inMemoryDataService.genId(this.heroes), 
+      firstName:  this.firstName?.value! 
+    }
+    this.heroService.addHero(newHero)
       .subscribe(hero => {
+        this.firstName?.setValue('')
+        this.addHeroForm.reset();
         this.heroes.push(hero);
       })
   }

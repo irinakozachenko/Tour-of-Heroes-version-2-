@@ -2,7 +2,7 @@ import { Component, input, OnInit } from '@angular/core';
 import { HighlightDirective } from '../highlight.directive';
 import { ReversePipe } from '../reversePipe';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CaseEnum } from '../hero.const';
+import { LetterCaseEnum } from '../hero.const';
 
 @Component({
   selector: 'app-custom-element',
@@ -12,20 +12,20 @@ import { CaseEnum } from '../hero.const';
 })
 export class CustomElement implements OnInit {
   color = "";
-  word = "Test string for uppercase pipe";
-  case = new FormControl(CaseEnum.Uppercase);
-  testStringForCase: string = "Test string for case"
-  CaseEnum = CaseEnum
+  stringForReverse = "Test string for reverse pipe";
+  letterCase = new FormControl(LetterCaseEnum.Uppercase);
+  stringForLetterCase: string = "Test string for letter case"
+  LetterCaseEnum = LetterCaseEnum
 
   ngOnInit() {
-    this.caseSelection();
+    this.letterCaseSelection();
   }
 
-  caseSelection() {
-    if (this.case.value === CaseEnum.Lowercase) {
-      this.testStringForCase = this.testStringForCase.toLowerCase();
+  letterCaseSelection() {
+    if (this.letterCase.value === LetterCaseEnum.Lowercase) {
+      this.stringForLetterCase = this.stringForLetterCase.toLowerCase();
     } else {
-      this.testStringForCase = this.testStringForCase.toUpperCase();
+      this.stringForLetterCase = this.stringForLetterCase.toUpperCase();
     }
   }
 }
