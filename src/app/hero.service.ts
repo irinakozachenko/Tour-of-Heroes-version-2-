@@ -25,6 +25,7 @@ export class HeroService {
     }
 
     getHero(id: number): Observable<Hero> {
+        console.log(333)
         this.messageService.add(`HeroService: fetched hero id=${id}`);
         const url = `${this.heroesUrl}/${id}`;
         return this.http.get<Hero>(url)

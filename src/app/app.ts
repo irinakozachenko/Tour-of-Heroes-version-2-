@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { UIRouterModule } from "@uirouter/angular";
-import { Messages } from './messages/messages';
 
 @Component({
   selector: 'app-root',
-  imports: [UIRouterModule, Messages],
+  imports: [UIRouterModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

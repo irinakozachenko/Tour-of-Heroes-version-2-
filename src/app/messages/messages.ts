@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { MessageService } from '../message.service';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-messages',
-  imports: [NgFor, NgIf],
+  imports: [NgFor],
   templateUrl: './messages.html',
   styleUrl: './messages.css'
 })
 export class Messages {
-  constructor (public messageService: MessageService) {}
+  messages!: string[]
+  constructor (public messageService: MessageService) {
+    this.messages = this.messageService.messages
+  }
 }
