@@ -1,0 +1,68 @@
+import { Component, input, OnInit } from '@angular/core';
+import { Hero } from '../hero';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgIf, UpperCasePipe, Location } from '@angular/common';
+import { HeroService } from '../hero.service';
+import { UIRouterModule } from "@uirouter/angular";
+import { HeroGenderEnum } from '../hero.const';
+import { ageRangeValidator } from '../ageRange.validator ';
+
+@Component({
+  selector: 'app-hero-detail',
+  imports: [FormsModule, NgIf, UpperCasePipe, UIRouterModule, ReactiveFormsModule],
+  templateUrl: './hero-detail.html',
+  styleUrl: './hero-detail.css',
+})
+export class HeroDetail implements OnInit{
+  hero?: Hero | undefined;
+  heroId = input<number>(0);
+  heroForm!: FormGroup
+  HeroGenderEnum = HeroGenderEnum
+
+  constructor(private heroService: HeroService, private location: Location,
+    private formBuilder: FormBuilder
+  ) {}
+
+  ngOnInit() {
+    this.getHero();
+  }
+
+  getHero(): void {
+    this.heroService.getHero(this.heroId())
+      .subscribe(hero => {
+        this.hero = hero;
+        this.heroForm = this.formBuilder.group({
+          firstName: [this.hero.firstName, [Validators.required, Validators.minLength(3)]],
+          lastName: [this.hero.lastName],
+          age: [this.hero.age, [ageRangeValidator]],
+          merried: [this.hero.married],
+          address: this.formBuilder.group({
+            street: [this.hero.address?.street],
+            city: [this.hero.address?.city]
+          }),
+          gender: [this.hero.gender ?? HeroGenderEnum.Male],
+          email: [this.hero.email, Validators.email]
+        });
+      })
+  }
+
+  save(): void {
+    if (this.hero && this.heroForm.valid) {
+      this.hero.firstName = this.heroForm.value.firstName;
+      this.hero.lastName = this.heroForm.value.lastName;
+      this.hero.age = this.heroForm.value.age;
+      this.hero.married = this.heroForm.value.merried;
+      this.hero.address = {
+        city: this.heroForm.value.address?.city,
+        street: this.heroForm.value.address?.street
+      };
+      this.hero.gender = this.heroForm.value.gender;
+      this.heroService.updateHero(this.hero)
+        .subscribe(() => this.goBack());
+    }
+  }
+
+  goBack() {
+    this.location.back();
+  }
+}

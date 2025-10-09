@@ -1,12 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { UIRouterModule } from "@uirouter/angular";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [UIRouterModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('angular-tour-of-heroes1');
+  title = 'Tour of Heroes';
 }

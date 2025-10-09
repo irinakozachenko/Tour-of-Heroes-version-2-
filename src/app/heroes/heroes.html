@@ -1,0 +1,31 @@
+<h2>My Heroes</h2>
+
+<div class="test-output-block">
+  <h3>Test component output properties </h3>
+  <app-test-output (addItemEvent)="addItem($event)"/>
+  <p>🐢 all the way down {{ items.length }}</p>
+</div>
+
+<div class="add-hero-block">
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName/>
+
+  <button type="button" class="add-button" (click)="addHero(heroName.value);heroName.value=''">
+    Add hero
+  </button>
+</div>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a uiSref="heroDetail" 
+      [uiParams]="{ id: hero.id }"  
+       uiSrefActive="active">
+        <span class="name">{{hero.firstName}}</span>
+    </a>
+    <!--<a routerLink="/detail/{{ hero.id }}">
+      <span class="name">{{hero.name}}</span>
+    </a>-->
+    <button type="button" class="delete" title="delete"
+      (click)="delete(hero)">x</button>
+  </li>
+</ul>

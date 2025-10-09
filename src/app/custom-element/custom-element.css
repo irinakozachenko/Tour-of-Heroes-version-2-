@@ -1,0 +1,10 @@
+.block {
+    border: 1px solid gray;
+    padding: 15px;
+    margin-bottom: 15px;
+    padding-top: 0;
+}
+
+.block--first {
+    margin-top: 30px;
+}

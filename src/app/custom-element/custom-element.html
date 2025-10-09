@@ -1,0 +1,27 @@
+<div class="block block--first">
+    <h3>Pick a highlight color</h3>
+    <div>
+        <input type="radio" name="colors" (click)="color='lightgreen'">Green
+        <input type="radio" name="colors" (click)="color='yellow'">yellow
+        <input type="radio" name="colors" (click)="color='cyan'">cyan
+    </div>
+    <h2 [appHighlight]="color">Test highlight directive</h2>
+</div>
+
+<div class="block">
+    <h3>Test reverse pipe</h3>
+    <p>{{ word }}</p>
+    <p>{{ word | reverse }}</p>
+</div>
+
+<div class="block">
+    <h3>Select the letter case</h3>
+    <label for="case">Letter case </label>
+    <label>
+        <input type="radio" [formControl]="case" [value]="CaseEnum.Uppercase" (change)="caseSelection()"> {{ CaseEnum.Uppercase }}
+    </label>
+    <label>
+        <input type="radio" [formControl]="case" [value]="CaseEnum.Lowercase" (change)="caseSelection()"> {{ CaseEnum.Lowercase }}
+    </label>
+    <p>{{ testStringForCase }}</p>
+</div>
