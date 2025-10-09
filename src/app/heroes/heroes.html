@@ -1,11 +1,5 @@
 <h2>My Heroes</h2>
 
-<div class="test-output-block">
-  <h3>Test component output properties </h3>
-  <app-test-output-property (addItemEvent)="addItem($event)"/>
-  <p>🐢 all the way down {{ items.length }}</p>
-</div>
-
 <form [formGroup]="addHeroForm" (ngSubmit)="addHero()" class="add-hero-block">
   <label for="firstName">Hero name </label>
   <input id="firstName" formControlName="firstName" class="control--firstName"/>

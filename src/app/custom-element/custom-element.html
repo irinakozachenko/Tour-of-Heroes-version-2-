@@ -25,3 +25,10 @@
     </label>
     <p>{{ stringForLetterCase }}</p>
 </div>
+
+<div class="block">
+  <h3>Test component output properties </h3>
+  <app-test-output-property (addItemEvent)="addItem($event)"/>
+  <p>🐢 all the way down {{ items.length }}</p>
+</div>
+

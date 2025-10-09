@@ -3,10 +3,11 @@ import { HighlightDirective } from '../highlight.directive';
 import { ReversePipe } from '../reversePipe';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { LetterCaseEnum } from '../hero.const';
+import { TestOutputProperty } from '../test-output-property/test-output-property';
 
 @Component({
   selector: 'app-custom-element',
-  imports: [HighlightDirective, ReversePipe, ReactiveFormsModule],
+  imports: [HighlightDirective, ReversePipe, ReactiveFormsModule, TestOutputProperty],
   templateUrl: './custom-element.html',
   styleUrl: './custom-element.css'
 })
@@ -16,6 +17,7 @@ export class CustomElement implements OnInit {
   letterCase = new FormControl(LetterCaseEnum.Uppercase);
   stringForLetterCase: string = "Test string for letter case"
   LetterCaseEnum = LetterCaseEnum
+  items = new Array();
 
   ngOnInit() {
     this.letterCaseSelection();
@@ -27,5 +29,9 @@ export class CustomElement implements OnInit {
     } else {
       this.stringForLetterCase = this.stringForLetterCase.toUpperCase();
     }
+  }
+  
+  addItem(item: string) {
+    this.items.push(item);
   }
 }

@@ -3,20 +3,18 @@ import { Hero } from '../hero';
 import { NgFor, NgIf } from '@angular/common';
 import { HeroService } from '../hero.service';
 import { UIRouterModule } from "@uirouter/angular";
-import { TestOutputProperty } from '../test-output-property/test-output-property';
 import { InMemoryDataService } from '../in-memory-data';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-heroes',
-  imports: [NgFor, UIRouterModule, TestOutputProperty, ReactiveFormsModule, NgIf],
+  imports: [NgFor, UIRouterModule, ReactiveFormsModule, NgIf],
   templateUrl: './heroes.html',
   styleUrl: './heroes.css',
 })
 export class Heroes implements OnInit {
   heroes: Hero[] = [];
   selectedHero?: Hero;
-  items = new Array();
   addHeroForm = new FormGroup({
     firstName: new FormControl('', Validators.required)
   })
@@ -56,9 +54,5 @@ export class Heroes implements OnInit {
   delete(hero: Hero) {
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero.id).subscribe();
-  }
-
-  addItem(item: string) {
-    this.items.push(item);
   }
 }
