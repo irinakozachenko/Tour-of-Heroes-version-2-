@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HighlightDirective } from '../highlight.directive';
 import { ReversePipe } from '../reversePipe';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
