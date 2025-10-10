@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
+import { Hero } from '../hero.type';
 import { HeroService } from '../hero.service';
 import { NgFor } from '@angular/common';
 import { HeroSearch } from '../hero-search/hero-search';

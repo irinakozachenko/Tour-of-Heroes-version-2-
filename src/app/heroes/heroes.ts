@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
+import { Hero } from '../hero.type';
 import { NgFor, NgIf } from '@angular/common';
 import { HeroService } from '../hero.service';
 import { UIRouterModule } from "@uirouter/angular";
-import { InMemoryDataService } from '../in-memory-data';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -19,7 +18,7 @@ export class Heroes implements OnInit {
     firstName: new FormControl('', Validators.required)
   })
 
-  constructor(private heroService: HeroService, private inMemoryDataService: InMemoryDataService) {}
+  constructor(private heroService: HeroService) {}
 
   ngOnInit() {
     this.getHeroes();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
-import { Hero } from '../hero';
+import { Hero } from '../hero.type';
 import { HeroService } from '../hero.service';
 import { UIRouterModule } from "@uirouter/angular";
 import { AsyncPipe, NgFor } from '@angular/common';

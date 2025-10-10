@@ -1,5 +1,5 @@
 import { Component, input, OnInit } from '@angular/core';
-import { Hero } from '../hero';
+import { Hero } from '../hero.type';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf, UpperCasePipe, Location } from '@angular/common';
 import { HeroService } from '../hero.service';
@@ -32,12 +32,8 @@ export class HeroDetail implements OnInit{
         this.heroForm = this.formBuilder.group({
           firstName: [this.hero.firstName, [Validators.required, Validators.minLength(3)]],
           lastName: [this.hero.lastName],
-          age: [this.hero.age, [ageRangeValidator]],
-          merried: [this.hero.married],
-          address: this.formBuilder.group({
-            street: [this.hero.address?.street],
-            city: [this.hero.address?.city]
-          }),
+          street: [this.hero.street],
+          city: [this.hero.city],
           gender: [this.hero.gender ?? HeroGenderEnum.Male],
           email: [this.hero.email, Validators.email]
         });
@@ -48,12 +44,8 @@ export class HeroDetail implements OnInit{
     if (this.hero && this.heroForm.valid) {
       this.hero.firstName = this.heroForm.value.firstName;
       this.hero.lastName = this.heroForm.value.lastName;
-      this.hero.age = this.heroForm.value.age;
-      this.hero.married = this.heroForm.value.merried;
-      this.hero.address = {
-        city: this.heroForm.value.address?.city,
-        street: this.heroForm.value.address?.street
-      };
+      this.hero.city = this.heroForm.value.city;
+      this.hero.street = this.heroForm.value.street;
       this.hero.gender = this.heroForm.value.gender;
       this.hero.email = this.heroForm.value.email;
       this.heroService.updateHero(this.hero)

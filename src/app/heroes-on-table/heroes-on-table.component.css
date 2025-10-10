@@ -1,0 +1,31 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.hidden {
+    display: none;
+}
+
+.sortDown:after,
+.sortUp:after {
+  content: ' ';
+  position: relative;
+  left: 2px;
+  border: 8px solid transparent;
+}
+
+.sortDown:after {
+  top: 10px;
+  border-top-color: silver;
+}
+
+.sortUp:after {
+  bottom: 15px;
+  border-bottom-color: silver;
+}
+
+.sortDown,
+.sortUp {
+  padding-right: 10px;
+}

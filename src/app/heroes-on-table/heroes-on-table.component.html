@@ -1,0 +1,19 @@
+<h2>Heroes of table</h2>
+<table>
+    <thead>
+        <th *ngFor="let column of columnsConfig; index as i"
+            [ngClass]="[column.hidden ? 'hidden' : '', 
+                column.name !== sortByColumn ? '' : sortDesc ? 'sortDown' : 'sortUp']"
+            (click)="sort(column)">
+            {{ column.visibleName ?? column.name }}
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hero of heroes; index as i">
+            <td *ngFor="let column of columnsConfig"
+                [ngClass]="column.hidden ? 'hidden' : ''">
+                {{ hero[column.name] }}
+            </td>
+        </tr>
+    </tbody>
+</table>
