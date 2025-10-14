@@ -8,7 +8,7 @@ export const HEROES: Hero[] = [
     lastName: "Hauck",
     street: "Ward Spur",
     city: "North Hendersonboro",
-    bithDate: new Date,
+    bithDate: new Date('2015-08-11'),
     email: "Evangeline_West42@gmail.com",
     gender: HeroGenderEnum.Female
   },
@@ -18,7 +18,7 @@ export const HEROES: Hero[] = [
     lastName: "Mitchell",
     street: "Long Lane",
     city: "Davoncester",
-    bithDate: new Date,
+    bithDate: new Date('2015-08-12'),
     email: "Van_Moen@hotmail.com",
     gender: HeroGenderEnum.Male
   },
@@ -28,7 +28,7 @@ export const HEROES: Hero[] = [
     lastName: "Marks",
     street: "Rosenbaum Estates",
     city: "North Melissaton",
-    bithDate: new Date,
+    bithDate: new Date('2021-08-19'),
     email: "Moriah_DAmore@yahoo.com",
     gender: HeroGenderEnum.Female
   },
@@ -38,7 +38,7 @@ export const HEROES: Hero[] = [
     lastName: "Carter",
     street: "Brianne Mills",
     city: "VonRuedenview",
-    bithDate: new Date,
+    bithDate: new Date('2024-01-10'),
     email: "Moses72@gmail.com",
     gender: HeroGenderEnum.Female
   },
@@ -48,7 +48,7 @@ export const HEROES: Hero[] = [
     lastName: "Carter",
     street: "S 10th Street",
     city: "Lake Elsinore",
-    bithDate: new Date,
+    bithDate: new Date('2025-08-11'),
     email: "Collin35@hotmail.com",
     gender: HeroGenderEnum.Male
   },
@@ -58,7 +58,7 @@ export const HEROES: Hero[] = [
     lastName: "Tromp",
     street: "Balmoral Road",
     city: "South Juwan",
-    bithDate: new Date,
+    bithDate: new Date('2019-06-05'),
     email: "Shirley_Gislason-Rau54@gmail.com",
     gender: HeroGenderEnum.Female
   },
@@ -68,7 +68,7 @@ export const HEROES: Hero[] = [
     lastName: "Hoeger",
     street: "Alfred Street",
     city: "Elnaside",
-    bithDate: new Date,
+    bithDate: new Date('2020-05-05'),
     email: "Devon.Jaskolski@yahoo.com",
     gender: HeroGenderEnum.Male
   },
@@ -78,7 +78,7 @@ export const HEROES: Hero[] = [
     lastName: "Huel",
     street: "Amos Fork",
     city: "West Jedediahburgh",
-    bithDate: new Date,
+    bithDate: new Date('2023-01-01'),
     email: "Daisy.Heidenreich55@yahoo.com",
     gender: HeroGenderEnum.Female
   },
@@ -88,7 +88,7 @@ export const HEROES: Hero[] = [
     lastName: "Wolf",
     street: "Lime Grove",
     city: "North Urban",
-    bithDate: new Date,
+    bithDate: new Date('2024-12-11'),
     email: "Deven.Wilderman11@yahoo.com",
     gender: HeroGenderEnum.Male
   },

@@ -12,7 +12,11 @@
         <tr *ngFor="let hero of heroes; index as i">
             <td *ngFor="let column of columnsConfig"
                 [ngClass]="column.hidden ? 'hidden' : ''">
-                {{ hero[column.name] }}
+                @if (column.type === ColumnTypeTable.Date) {
+                    {{ hero[column.name] | date : 'dd.MM.yyyy'}}
+                } @else {
+                    {{ hero[column.name] }}
+                }
             </td>
         </tr>
     </tbody>
