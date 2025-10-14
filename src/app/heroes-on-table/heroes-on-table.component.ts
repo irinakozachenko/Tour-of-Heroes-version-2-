@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero.type';
 import { HeroService } from '../hero.service';
-import { DatePipe, NgClass, NgFor } from '@angular/common';
+import { DatePipe, NgClass, NgFor, NgComponentOutlet } from '@angular/common';
 import { ColumnConfigTable, ColumnTypeTable, PagingTable, SortTable } from '../table.type';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { HeroGenderCell } from '../hero-gender-cell/hero-gender-cell';
 
 @Component({
   selector: 'app-heroes-on-table',
-  imports: [NgFor, NgClass, DatePipe, MatPaginatorModule],
+  imports: [NgFor, NgClass, NgComponentOutlet, DatePipe, MatPaginatorModule],
   templateUrl: './heroes-on-table.component.html',
   styleUrl: './heroes-on-table.component.css'
 })
@@ -30,7 +31,7 @@ export class HeroesOnTable implements OnInit {
     { name: 'street', visibleName: 'Street', type: ColumnTypeTable.String },
     { name: 'city', visibleName: 'City', type: ColumnTypeTable.String },
     { name: 'bithDate', visibleName: 'BithDate', type: ColumnTypeTable.Date },
-    { name: 'gender', visibleName: 'Gender', type: ColumnTypeTable.String },
+    { name: 'gender', visibleName: 'Gender', type: ColumnTypeTable.Custom, component:  HeroGenderCell},
     { name: 'email', visibleName: 'Email', type: ColumnTypeTable.String },
   ]
 

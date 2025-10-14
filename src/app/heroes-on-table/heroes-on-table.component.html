@@ -14,6 +14,8 @@
                 [ngClass]="column.hidden ? 'hidden' : ''">
                 @if (column.type === ColumnTypeTable.Date) {
                     {{ hero[column.name] | date : 'dd.MM.yyyy'}}
+                } @else if (column.type === ColumnTypeTable.Custom) {
+                    <ng-template [ngComponentOutlet]="column.component" [ngComponentOutletInputs]="{ value: hero[column.name] }" />
                 } @else {
                     {{ hero[column.name] }}
                 }
@@ -21,4 +23,4 @@
         </tr>
     </tbody>
 </table>
-<mat-paginator [length]="paging.totalItems" [pageSize]="paging.pageSize" [pageIndex]="paging.currentPage" (page)="goToPage($event.pageIndex)"></mat-paginator>
+<mat-paginator class="paging" [length]="paging.totalItems" [pageSize]="paging.pageSize" [pageIndex]="paging.currentPage" (page)="goToPage($event.pageIndex)"></mat-paginator>

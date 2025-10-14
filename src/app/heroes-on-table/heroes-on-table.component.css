@@ -29,3 +29,7 @@ table, th, td {
 .sortUp {
   padding-right: 10px;
 }
+
+.paging {
+  width: 400px;
+}
