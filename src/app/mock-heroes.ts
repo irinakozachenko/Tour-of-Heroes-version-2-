@@ -45,7 +45,7 @@ export const HEROES: Hero[] = [
   {
     id: 5,
     firstName: "Eloise",
-    lastName: "Cole",
+    lastName: "Carter",
     street: "S 10th Street",
     city: "Lake Elsinore",
     bithDate: new Date,

@@ -20,7 +20,7 @@ export interface Hero {
   lastName?: string;
   street?: string,
   city?: string,
-  bithDate?: Date,
+  //bithDate?: Date,
   gender?: HeroGenderEnum,
   email?: string,
 

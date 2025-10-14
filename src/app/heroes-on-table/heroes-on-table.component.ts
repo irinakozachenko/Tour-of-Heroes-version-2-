@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero.type';
 import { HeroService } from '../hero.service';
 import { NgClass, NgFor } from '@angular/common';
-import { ColumnCongigTable } from '../table.type';
+import { ColumnConfigTable, SortTable } from '../table.type';
 
 @Component({
   selector: 'app-heroes-on-table',
@@ -12,9 +12,11 @@ import { ColumnCongigTable } from '../table.type';
 })
 export class HeroesOnTable implements OnInit {
   heroes: Hero[] = [];
-  sortByColumn = 'firstName'
-  sortDesc = true
-  columnsConfig: ColumnCongigTable[] = [
+  sortByColumn: SortTable = {
+    column: 'firstName',
+    desc: false
+  }
+  columnsConfig: ColumnConfigTable[] = [
     { name: 'id', hidden: true },
     { name: 'firstName', visibleName: 'First name' },
     { name: 'lastName', visibleName: 'Last name' },
@@ -33,16 +35,28 @@ export class HeroesOnTable implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-      .subscribe(heroes =>  this.heroes = heroes)
+      .subscribe(heroes =>  {
+        this.heroes = heroes
+        this.sort(this.sortByColumn.column)
+    })
   }
 
-  sort(column: ColumnCongigTable) {
-    if (this.sortByColumn === column.name) {
-      this.sortDesc = !this.sortDesc
+  sort(columnName: string) {
+    if (this.sortByColumn.column === columnName) {
+      this.sortByColumn.desc = !this.sortByColumn.desc
     }
     else {
-      this.sortByColumn = column.name
-      this.sortDesc = true
+      this.sortByColumn.column = columnName
+      this.sortByColumn.desc = true
+    }
+
+    if (typeof Worker !== 'undefined') {
+      const worker = new Worker(new URL('heroes-on-table.worker', import.meta.url));
+      worker.onmessage = ({ data }) => {
+        this.heroes = data.heroes
+        console.log(`page got message: ${data}`);
+      };
+      worker.postMessage({heroes: this.heroes, columnName: columnName, desc: this.sortByColumn.desc});
     }
   }
 }

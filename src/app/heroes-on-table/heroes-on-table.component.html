@@ -3,8 +3,8 @@
     <thead>
         <th *ngFor="let column of columnsConfig; index as i"
             [ngClass]="[column.hidden ? 'hidden' : '', 
-                column.name !== sortByColumn ? '' : sortDesc ? 'sortDown' : 'sortUp']"
-            (click)="sort(column)">
+                column.name !== sortByColumn.column ? '' : sortByColumn.desc ? 'sortDown' : 'sortUp']"
+            (click)="sort(column.name)">
             {{ column.visibleName ?? column.name }}
         </th>
     </thead>
