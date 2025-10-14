@@ -5,6 +5,7 @@ import { DatePipe, NgClass, NgFor, NgComponentOutlet } from '@angular/common';
 import { ColumnConfigTable, ColumnTypeTable, PagingTable, SortTable } from '../table.type';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HeroGenderCell } from '../hero-gender-cell/hero-gender-cell';
+import { HeroPopupCell } from '../hero-popup-cell/hero-popup-cell.component';
 
 @Component({
   selector: 'app-heroes-on-table',
@@ -32,7 +33,7 @@ export class HeroesOnTable implements OnInit {
     { name: 'city', visibleName: 'City', type: ColumnTypeTable.String },
     { name: 'bithDate', visibleName: 'BithDate', type: ColumnTypeTable.Date },
     { name: 'gender', visibleName: 'Gender', type: ColumnTypeTable.Custom, component:  HeroGenderCell},
-    { name: 'email', visibleName: 'Email', type: ColumnTypeTable.String },
+    { name: 'email', visibleName: 'Email', type: ColumnTypeTable.Custom, component: HeroPopupCell },
   ]
 
   constructor(private heroService: HeroService) {}

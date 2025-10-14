@@ -26,3 +26,8 @@ export interface Hero {
 
   [index: string]: string | number | Date | undefined;
 }
+
+export interface PopupModel {
+  title?: string,
+  content?: string
+}
