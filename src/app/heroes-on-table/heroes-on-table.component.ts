@@ -2,20 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero.type';
 import { HeroService } from '../hero.service';
 import { DatePipe, NgClass, NgFor } from '@angular/common';
-import { ColumnConfigTable, ColumnTypeTable, SortTable } from '../table.type';
+import { ColumnConfigTable, ColumnTypeTable, PagingTable, SortTable } from '../table.type';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-heroes-on-table',
-  imports: [NgFor, NgClass, DatePipe],
+  imports: [NgFor, NgClass, DatePipe, MatPaginatorModule],
   templateUrl: './heroes-on-table.component.html',
   styleUrl: './heroes-on-table.component.css'
 })
 export class HeroesOnTable implements OnInit {
   ColumnTypeTable = ColumnTypeTable
   heroes: Hero[] = [];
+  paginatedHeroes: Hero[] = [];
   sortByColumn: SortTable = {
     column: 'firstName',
     desc: false
+  };
+  paging: PagingTable = {
+    pageSize: 10,
+    currentPage: 0
   }
   columnsConfig: ColumnConfigTable[] = [
     { name: 'id', hidden: true, type: ColumnTypeTable.Number },
@@ -38,6 +44,7 @@ export class HeroesOnTable implements OnInit {
     this.heroService.getHeroes()
       .subscribe(heroes =>  {
         this.heroes = heroes
+        this.paging.totalItems = this.heroes.length
         this.sort(this.sortByColumn.column)
     })
   }
@@ -52,12 +59,23 @@ export class HeroesOnTable implements OnInit {
     }
 
     if (typeof Worker !== 'undefined') {
-      const worker = new Worker(new URL('heroes-on-table.worker', import.meta.url));
+      const worker = new Worker(new URL('heroes-on-table-sort.worker', import.meta.url));
       worker.onmessage = ({ data }) => {
         this.heroes = data.heroes
-        console.log(`page got message: ${data}`);
+        this.goToPage(this.paging.currentPage)
       };
       worker.postMessage({heroes: this.heroes, columnName: columnName, desc: this.sortByColumn.desc});
+    }
+  }
+
+  goToPage(pageIndex: number) {
+    this.paging.currentPage = pageIndex
+    if (typeof Worker !== 'undefined') {
+      const worker = new Worker(new URL('heroes-on-table-paging.worker', import.meta.url));
+      worker.onmessage = ({ data }) => {
+        this.paginatedHeroes = data.paginatedHeroes
+      };
+      worker.postMessage({paging: this.paging, heroes: this.heroes});
     }
   }
 }

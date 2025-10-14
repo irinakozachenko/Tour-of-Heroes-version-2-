@@ -14,5 +14,10 @@ export enum ColumnTypeTable {
     String,
     Date, 
     Number,
-    
+}
+
+export interface PagingTable {
+    currentPage: number,
+    totalItems?: number,
+    pageSize: number
 }

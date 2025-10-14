@@ -9,7 +9,7 @@
         </th>
     </thead>
     <tbody>
-        <tr *ngFor="let hero of heroes; index as i">
+        <tr *ngFor="let hero of paginatedHeroes; index as i">
             <td *ngFor="let column of columnsConfig"
                 [ngClass]="column.hidden ? 'hidden' : ''">
                 @if (column.type === ColumnTypeTable.Date) {
@@ -21,3 +21,4 @@
         </tr>
     </tbody>
 </table>
+<mat-paginator [length]="paging.totalItems" [pageSize]="paging.pageSize" [pageIndex]="paging.currentPage" (page)="goToPage($event.pageIndex)"></mat-paginator>
