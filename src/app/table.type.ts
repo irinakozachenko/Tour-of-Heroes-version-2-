@@ -5,7 +5,8 @@ export interface ColumnConfigTable {
     visibleName?: string,
     hidden?: boolean,
     type?: ColumnTypeTable,
-    component?: any
+    component?: any,
+    notSortable?: boolean 
 }
 
 export interface SortTable {

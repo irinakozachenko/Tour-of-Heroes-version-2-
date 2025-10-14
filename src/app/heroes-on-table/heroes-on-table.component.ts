@@ -33,7 +33,7 @@ export class HeroesOnTable implements OnInit {
     { name: 'city', visibleName: 'City', type: ColumnTypeTable.String },
     { name: 'bithDate', visibleName: 'BithDate', type: ColumnTypeTable.Date },
     { name: 'gender', visibleName: 'Gender', type: ColumnTypeTable.Custom, component:  HeroGenderCell},
-    { name: 'email', visibleName: 'Email', type: ColumnTypeTable.Custom, component: HeroPopupCell },
+    { name: 'email', visibleName: 'Email', type: ColumnTypeTable.Custom, component: HeroPopupCell, notSortable: true },
   ]
 
   constructor(private heroService: HeroService) {}
