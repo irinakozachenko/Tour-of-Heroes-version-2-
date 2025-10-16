@@ -1,5 +1,3 @@
-import { Component } from "@angular/core"
-
 export interface ColumnConfigTable {
     name: string,
     visibleName?: string,
