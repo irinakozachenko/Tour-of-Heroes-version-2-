@@ -15,5 +15,6 @@ export interface Hero {
 
 export interface PopupModel {
   title?: string,
-  content?: string
+  content?: string,
+  submitButton?: string
 }

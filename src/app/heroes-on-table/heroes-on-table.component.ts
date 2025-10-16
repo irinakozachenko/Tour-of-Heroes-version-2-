@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero.type';
+import { Hero, PopupModel } from '../hero.type';
 import { HeroService } from '../hero.service';
 import { DatePipe, NgClass, NgFor, NgComponentOutlet } from '@angular/common';
 import { ColumnConfigTable, ColumnTypeTable, PagingTable, SortTable } from '../table.type';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HeroGenderCell } from '../hero-gender-cell/hero-gender-cell';
 import { HeroPopupCell } from '../hero-popup-cell/hero-popup-cell.component';
+import { PopupService } from '../popup.service';
 
 @Component({
   selector: 'app-heroes-on-table',
@@ -36,7 +37,7 @@ export class HeroesOnTable implements OnInit {
     { name: 'email', visibleName: 'Email', type: ColumnTypeTable.Custom, component: HeroPopupCell, notSortable: true },
   ]
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService, private popupService: PopupService) {}
 
   ngOnInit() {
     this.getHeroes();
@@ -79,5 +80,23 @@ export class HeroesOnTable implements OnInit {
       };
       worker.postMessage({paging: this.paging, heroes: this.heroes});
     }
+  }
+
+  deleteHero(hero: Hero) {
+    const data: PopupModel = { 
+      title: 'Delete hero', 
+      content: `Are you sure you want to delete "${hero.firstName}"?`, 
+      submitButton: "Delete"
+    };
+    const dialogRef = this.popupService.openPopup(data);
+     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.heroService.deleteHero(hero.id).subscribe(() => {
+          this.heroes = this.heroes.filter(h => h.id !== hero.id);
+          this.paging.totalItems = this.heroes.length
+          this.goToPage(this.paging.currentPage)
+        })
+      }
+    });
   }
 }

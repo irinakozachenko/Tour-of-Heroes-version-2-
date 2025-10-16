@@ -7,6 +7,7 @@
             (click)="!column.notSortable ? sort(column.name) : ''">
             {{ column.visibleName ?? column.name }}
         </th>
+        <th>Action</th>
     </thead>
     <tbody>
         <tr *ngFor="let hero of paginatedHeroes; index as i">
@@ -20,6 +21,7 @@
                     {{ hero[column.name] }}
                 }
             </td>
+            <td><button type="text" (click)="deleteHero(hero)">Delete</button></td>
         </tr>
     </tbody>
 </table>

@@ -2,4 +2,7 @@
 <mat-dialog-content>{{ data.content ?? 'Content'}}</mat-dialog-content>
 <mat-dialog-actions >
   <button matButton mat-dialog-close>Close</button>
+  @if (!!data.submitButton) {
+    <button matButton [mat-dialog-close]="true" cdkFocusInitial>{{ data.submitButton }}</button>
+  }
 </mat-dialog-actions>
