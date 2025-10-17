@@ -11,10 +11,11 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular
 import { HeroGenderEnum } from '../hero.const';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UIRouterModule } from '@uirouter/angular';
 
 @Component({
   selector: 'app-heroes-on-table',
-  imports: [NgFor, NgClass, NgComponentOutlet, DatePipe, MatPaginatorModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule],
+  imports: [NgFor, NgClass, NgComponentOutlet, DatePipe, MatPaginatorModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, UIRouterModule],
   templateUrl: './heroes-on-table.component.html',
   styleUrl: './heroes-on-table.component.css'
 })

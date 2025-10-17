@@ -43,3 +43,8 @@ table, th, td {
 .column-name-block th {
   border-bottom: none;
 }
+
+.action {
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+} 

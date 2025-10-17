@@ -50,7 +50,14 @@
                     {{ hero[column.name] }}
                 }
             </td>
-            <td><button type="text" (click)="deleteHero(hero)">Delete</button></td>
+            <td>
+                <button class="action" type="text" (click)="deleteHero(hero)">Delete</button>
+                 <button  class="action" type="text" uiSref="heroDetail" 
+                    [uiParams]="{ id: hero.id }"  
+                    uiSrefActive="active">
+                        <span class="name">Edit</span>
+                </button>
+            </td>
         </tr>
     </tbody>
 </table>
