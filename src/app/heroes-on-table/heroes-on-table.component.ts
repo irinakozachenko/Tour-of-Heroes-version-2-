@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero, PopupModel } from '../hero.type';
 import { HeroService } from '../hero.service';
 import { DatePipe, NgClass, NgFor, NgComponentOutlet } from '@angular/common';
-import { ColumnConfigTable, ColumnTypeTable, ContextFilterTable, ContextFilterTypeTable, PagingTable, SortTable } from '../table.type';
+import { ColumnConfigTable, ColumnTypeTable, ContextFilterOperationTable, ContextFilterTable, ContextFilterTypeTable, PagingTable, SearchValueTable, SortTable } from '../table.type';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HeroGenderCell } from '../hero-gender-cell/hero-gender-cell';
 import { HeroPopupCell } from '../hero-popup-cell/hero-popup-cell.component';
@@ -22,6 +22,7 @@ export class HeroesOnTable implements OnInit {
   ColumnTypeTable = ColumnTypeTable
   ContextFilterTypeTable = ContextFilterTypeTable
   heroes: Hero[] = [];
+  originalHeroes: Hero[] = [];
   paginatedHeroes: Hero[] = [];
   sortByColumn: SortTable = {
     column: 'firstName',
@@ -48,7 +49,7 @@ export class HeroesOnTable implements OnInit {
     { columnName: 'street', type: ContextFilterTypeTable.String },
     { columnName: 'city', type: ContextFilterTypeTable.String },
     { columnName: 'bithDate', type: ContextFilterTypeTable.Date },
-    { columnName: 'gender', type: ContextFilterTypeTable.Select, options: Object.keys(HeroGenderEnum)},
+    { columnName: 'gender', type: ContextFilterTypeTable.Select, options: Object.keys(HeroGenderEnum), operation: ContextFilterOperationTable.Equality },
     { columnName: 'email', hidden: true },
   ]
 
@@ -62,6 +63,7 @@ export class HeroesOnTable implements OnInit {
     this.contextFilters.forEach(filter => {
       this.filters.push(this.formBuilder.group({
         columnName: this.formBuilder.control(filter.columnName),
+        operation: this.formBuilder.control(filter.operation),
         value: this.formBuilder.control(''),
       }))
     })
@@ -76,6 +78,7 @@ export class HeroesOnTable implements OnInit {
     this.heroService.getHeroes()
       .subscribe(heroes =>  {
         this.heroes = heroes
+        this.originalHeroes = heroes
         this.paging.totalItems = this.heroes.length
         this.sort(this.sortByColumn.column)
     })
@@ -134,13 +137,15 @@ export class HeroesOnTable implements OnInit {
   }
 
   onSubmitContextFilter() {
-    const contextFilterValues = this.contextFilterForm.value.filters.filter((filter: any) => filter.value)
-    const searchString = contextFilterValues.map((element: any) => `${element.columnName}=${element.value}`).join("&")
-    this.heroService.searchHeroes(searchString).subscribe(heroes => {
-      this.heroes = heroes
-      this.paging.totalItems = this.heroes.length
-      this.paging.currentPage = 0
-      this.sortTable(this.sortByColumn.column)
-    })
+    if (typeof Worker !== 'undefined') {
+      const worker = new Worker(new URL('heroes-on-table-context-filter.worker', import.meta.url));
+      worker.onmessage = ({ data }) => {
+        this.heroes = data.heroes
+        this.paging.totalItems = this.heroes.length
+        this.paging.currentPage = 0
+        this.sortTable(this.sortByColumn.column)
+      };
+      worker.postMessage({contextFilter: this.contextFilterForm.value.filters, originalHeroes: this.originalHeroes});
+    }
   }
 }

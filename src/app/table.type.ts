@@ -29,6 +29,7 @@ export interface ContextFilterTable {
     columnName: string,
     type?: ContextFilterTypeTable,
     hidden?: boolean,
+    operation?: ContextFilterOperationTable,
     options?: string[]
 }
 
@@ -37,4 +38,15 @@ export enum ContextFilterTypeTable {
     Date,
     Select,
     Number
+}
+
+export enum ContextFilterOperationTable {
+    Equality,
+    Include
+}
+
+export interface SearchValueTable {
+    columnName: string,
+    value: string,
+    operation: ContextFilterOperationTable
 }

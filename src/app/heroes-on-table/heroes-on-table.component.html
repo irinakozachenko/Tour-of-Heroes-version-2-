@@ -16,6 +16,7 @@
                 @if (!filter.hidden) {
                     <div class="filter" [formGroupName]="i">
                         <input type="hidden" formControlName="columnName" [value]="filter.columnName">
+                        <input type="hidden" formControlName="operation" [value]="filter.operation">
                         @if (filter.type === ContextFilterTypeTable.String) {
                             <input (keyup.enter)="onSubmitContextFilter()" type="text" formControlName="value" />
                         } @else if (filter.type === ContextFilterTypeTable.Date) {
