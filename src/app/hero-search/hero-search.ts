@@ -25,7 +25,7 @@ export class HeroSearch implements OnInit {
     this.heroes$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.heroService.searchHeroes(term))
+      switchMap((term: string) => this.heroService.searchHeroes(`firstName=${term}`))
     )
   }
 }

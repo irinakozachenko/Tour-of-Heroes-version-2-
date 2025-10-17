@@ -4,7 +4,7 @@ export interface ColumnConfigTable {
     hidden?: boolean,
     type?: ColumnTypeTable,
     component?: any,
-    notSortable?: boolean 
+    notSortable?: boolean
 }
 
 export interface SortTable {
@@ -23,4 +23,18 @@ export interface PagingTable {
     currentPage: number,
     totalItems?: number,
     pageSize: number
+}
+
+export interface ContextFilterTable {
+    columnName: string,
+    type?: ContextFilterTypeTable,
+    hidden?: boolean,
+    options?: string[]
+}
+
+export enum ContextFilterTypeTable {
+    String, 
+    Date,
+    Select,
+    Number
 }

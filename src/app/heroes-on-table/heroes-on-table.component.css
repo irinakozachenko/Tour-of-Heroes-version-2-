@@ -35,3 +35,11 @@ table, th, td {
 .paging {
   width: 400px;
 }
+
+.context-filter-block th {
+  border-top: none;
+}
+
+.column-name-block th {
+  border-bottom: none;
+}

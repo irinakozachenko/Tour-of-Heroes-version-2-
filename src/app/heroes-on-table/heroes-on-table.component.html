@@ -1,16 +1,44 @@
 <h2>Heroes of table</h2>
 <table>
-    <thead>
-        <th *ngFor="let column of columnsConfig; index as i"
-            [ngClass]="[column.hidden ? 'hidden' : '', 
-                column.name !== sortByColumn.column || column.notSortable ? '' : sortByColumn.desc ? 'sortDown' : 'sortUp']"
-            (click)="!column.notSortable ? sort(column.name) : ''">
-            {{ column.visibleName ?? column.name }}
-        </th>
-        <th>Action</th>
+    <thead [formGroup]="contextFilterForm">
+        <tr class="column-name-block">
+            <th *ngFor="let column of columnsConfig; index as i"
+                [ngClass]="[column.hidden ? 'hidden' : '']" >
+                <div [ngClass]="[column.name !== sortByColumn.column || column.notSortable ? '' : sortByColumn.desc ? 'sortDown' : 'sortUp']"
+                    (click)="!column.notSortable ? sort(column.name) : ''">
+                    {{ column.visibleName ?? column.name }}
+                </div>
+            </th>
+            <th>Action</th>
+        </tr>
+        <tr class="context-filter-block" formArrayName="filters">
+            <th *ngFor="let filter of contextFilters; index as i">
+                @if (!filter.hidden) {
+                    <div class="filter" [formGroupName]="i">
+                        <input type="hidden" formControlName="columnName" [value]="filter.columnName">
+                        @if (filter.type === ContextFilterTypeTable.String) {
+                            <input (keyup.enter)="onSubmitContextFilter()" type="text" formControlName="value" />
+                        } @else if (filter.type === ContextFilterTypeTable.Date) {
+                            <input (change)="onSubmitContextFilter()" type="date" value="" formControlName="value" />
+                        } @else if (filter.type === ContextFilterTypeTable.Select) {
+                            <mat-form-field>
+                                <mat-label>Select an option</mat-label>
+                                <mat-select formControlName="value" disableRipple (selectionChange)="onSubmitContextFilter()">
+                                    <mat-option value="">None</mat-option>
+                                    @for (option of filter.options; track option) {
+                                        <mat-option [value]="option">{{ option }}</mat-option>
+                                    }
+                                </mat-select>
+                            </mat-form-field>
+                        }
+                    </div>
+                }
+            </th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let hero of paginatedHeroes; index as i">
+        <tr *ngFor="let hero of paginatedHeroes">
             <td *ngFor="let column of columnsConfig"
                 [ngClass]="column.hidden ? 'hidden' : ''">
                 @if (column.type === ColumnTypeTable.Date) {
