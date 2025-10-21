@@ -166,6 +166,6 @@ export class HeroesOnTable implements OnInit {
   }
 
   isAllCheckBoxChecked(): boolean {
-    return this.paginatedHeroes.every((hero: Hero) => hero.checked)
+    return this.paginatedHeroes.length > 0 && this.paginatedHeroes.every((hero: Hero) => hero.checked)
   }
 }
