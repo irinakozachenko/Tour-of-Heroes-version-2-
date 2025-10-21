@@ -1,15 +1,13 @@
 @import '../variables.less';
 
-h2 {
+.header {
   text-align: center;
 }
 
-.heroes-menu {
+.menu {
   padding: 0;
   margin: auto;
   max-width: 1000px;
-
-  /* flexbox */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -18,7 +16,7 @@ h2 {
   align-items: flex-start;
 }
 
-a {
+.menu__link {
   background-color: @darkBlueColor;
   border-radius: 2px;
   padding: @identBig;
@@ -39,12 +37,12 @@ a {
 }
 
 @media (min-width: 600px) {
-  a {
+  .menu__link {
     width: 18%;
     box-sizing: content-box;
   }
 }
 
-a:hover {
+.menu__link:hover {
   background-color: @blackColor;
 }

@@ -6,15 +6,8 @@
   width: 15em;
 }
 
-input {
-  display: block;
-  width: 100%;
-  padding: @identAverage;
-  margin: @identBig 0;
-  box-sizing: border-box;
-}
 
-.heroes li {
+.heroes__li {
   position: relative;
   cursor: pointer;
   display: flex;
@@ -22,11 +15,11 @@ input {
   margin-bottom: @identAverage;
 }
 
-.heroes li:hover {
+.heroes__li:hover {
   left: .1em;
 }
 
-.heroes a {
+.heroes__a {
   color: @darkBlueColor;
   text-decoration: none;
   margin: @identAverage;
@@ -35,19 +28,7 @@ input {
   width: 100%;
 }
 
-.add-button {
- padding: @identAverage @identAverage*2;
- font-size: @identBig;
- margin-bottom: @identBig*2;
- margin-top: @identBig;
-}
-
-.add-button:hover {
-  color: @whiteColor;
-  background-color: @blueColor;
-}
-
-button.delete {
+.heroes__delete {
   background-color: @whiteColor;
   color:  @greyColor;
   font-size: @fontSixeAverage;
@@ -55,9 +36,36 @@ button.delete {
   padding: 1px @identAverage 3px @identAverage;
 }
 
-button.delete:hover {
+.heroes__delete:hover {
   background-color: @greyColor;
   color: @whiteColor;
+}
+
+.add-form {
+  border: 1px solid @greyColor;
+  padding: @identBig;
+  padding-bottom: 0;
+}
+
+.add-form__input {
+  display: block;
+  width: 100%;
+  padding: @identAverage;
+  margin: @identBig 0;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+
+.add-form__button {
+ padding: @identAverage @identAverage*2;
+ font-size: @identBig;
+ margin-bottom: @identBig*2;
+ margin-top: @identBig;
+}
+
+.add-form__button:hover {
+  color: @whiteColor;
+  background-color: @blueColor;
 }
 
 .test-output-block {
@@ -66,20 +74,10 @@ button.delete:hover {
   padding-left: @identBig;
 }
 
-.add-hero-block {
-  border: 1px solid @greyColor;
-  padding: @identBig;
-  padding-bottom: 0;
-
-  .control--firstName {
-    margin-bottom: 0;
-  }
-
-  .error--firstName {
-    display: block;
-  }
-}
-
 .error {
   color: @errorColor;
+}
+
+.error--firstName {
+  display: block;
 }

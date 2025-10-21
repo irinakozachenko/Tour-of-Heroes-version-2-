@@ -4,8 +4,8 @@ import { Hero } from "../hero.type";
 
 function sortByColumn(heroes: Hero[], columnName: string, desc: boolean = true) {
     heroes.sort((a: Hero, b: Hero) => {
-      const valueA: any = a[columnName]!
-      const valueB: any = b[columnName]!
+      const valueA = a[columnName]!
+      const valueB = b[columnName]!
       if (desc) {
         if (valueA < valueB) return -1;
         if (valueA > valueB) return 1;

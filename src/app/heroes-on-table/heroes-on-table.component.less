@@ -1,5 +1,22 @@
 @import '../variables.less';
 
+.paging {
+  width: 400px;
+}
+
+.context-filter-block th {
+  border-top: none;
+}
+
+.columns-block th {
+  border-bottom: none;
+}
+
+.rows__action {
+  margin-left: @indentSmall;
+  margin-right: @indentSmall;
+} 
+
 table, th, td {
   border: 1px solid @borderColor;
   border-collapse: collapse;
@@ -34,19 +51,3 @@ table, th, td {
   padding-right: @identAverage;
 }
 
-.paging {
-  width: 400px;
-}
-
-.context-filter-block th {
-  border-top: none;
-}
-
-.column-name-block th {
-  border-bottom: none;
-}
-
-.action {
-  margin-left: @indentSmall;
-  margin-right: @indentSmall;
-} 

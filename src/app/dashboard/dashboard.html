@@ -1,6 +1,6 @@
-<h2>Top Heroes</h2>
-<div class="heroes-menu">
-    <a *ngFor="let hero of heroes" 
+<h2 class="header">Top Heroes</h2>
+<div class="menu">
+    <a class="menu__link" *ngFor="let hero of heroes" 
         uiSref="heroDetail" 
         [uiParams]="{ id: hero.id }"  
         uiSrefActive="active">

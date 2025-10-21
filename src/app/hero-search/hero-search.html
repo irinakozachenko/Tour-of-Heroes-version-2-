@@ -1,17 +1,14 @@
-<div id="search-component">
-  <label for="search-box">Hero Search</label>
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+<div class="search">
+  <label class="search__label" for="search-box">Hero Search</label>
+  <input class="search__input" #searchBox id="search-box" (input)="search(searchBox.value)" />
 
-  <ul class="search-result">
-    <li *ngFor="let hero of heroes$ | async" >
-      <a uiSref="heroDetail" 
+  <ul class="result">
+    <li class="result__li" *ngFor="let hero of heroes$ | async" >
+      <a class="result__link" uiSref="heroDetail" 
         [uiParams]="{ id: hero.id }"  
         uiSrefActive="active">
           {{hero.firstName}}
       </a>
-      <!--<a routerLink="/detail/{{hero.id}}">
-        {{hero.name}}
-      </a>-->
     </li>
   </ul>
 </div>

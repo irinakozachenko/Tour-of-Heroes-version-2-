@@ -1,28 +1,25 @@
 <h2>My Heroes</h2>
 
-<form [formGroup]="addHeroForm" (ngSubmit)="addHero()" class="add-hero-block">
+<form [formGroup]="addHeroForm" (ngSubmit)="addHero()" class="add-form">
   <label for="firstName">Hero name </label>
-  <input id="firstName" formControlName="firstName" class="control--firstName"/>
+  <input id="firstName" formControlName="firstName" class="add-form__input"/>
   <span class="error error--firstName" *ngIf="(firstName?.invalid && (firstName?.dirty || firstName?.touched)) && firstName?.hasError('required')">
     * First Name is required
   </span>
 
-  <button type="submit" class="add-button">
+  <button type="submit" class="add-form__button">
     Add hero
   </button>
 </form>
 
 <ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a uiSref="heroDetail" 
+  <li class="heroes__li" *ngFor="let hero of heroes">
+    <a class="heroes__a" uiSref="heroDetail" 
       [uiParams]="{ id: hero.id }"  
        uiSrefActive="active">
-        <span class="name">{{hero.firstName}}</span>
+        <span class="heroes__name">{{hero.firstName}}</span>
     </a>
-    <!--<a routerLink="/detail/{{ hero.id }}">
-      <span class="name">{{hero.name}}</span>
-    </a>-->
-    <button type="button" class="delete" title="delete"
+    <button type="button" class="heroes__delete" title="delete"
       (click)="delete(hero)">x</button>
   </li>
 </ul>

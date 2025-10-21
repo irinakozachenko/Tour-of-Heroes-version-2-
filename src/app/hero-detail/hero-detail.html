@@ -1,7 +1,7 @@
 <div *ngIf="hero">
   <h2>{{hero.firstName | uppercase}} Details</h2>
-  <form [formGroup]="heroForm" (ngSubmit)="save()">
-    <div class="block">
+  <form class="hero-form" [formGroup]="heroForm" (ngSubmit)="save()">
+    <div class="hero-form__block">
       <label for="first-name">First name </label>
       <input id="first-name" type="text" formControlName="firstName">
       <span class="error" *ngIf="heroForm.get('firstName')?.hasError('required')">
@@ -12,12 +12,12 @@
       </span>
     </div>
 
-    <div class="block">
+    <div class="hero-form__block">
       <label for="last-name">Last name </label>
       <input id="last-name" type="text" formControlName="lastName">
     </div>
 
-    <div class="radio-group block">
+    <div class="hero-form__block">
       <label for="gender">Gender </label>
       <label>
         <input type="radio" formControlName="gender" value="Female"> {{ HeroGenderEnum.Female }}
@@ -27,7 +27,7 @@
       </label>
     </div>
 
-    <div class="block">
+    <div class="hero-form__block">
       <label for="email">Email </label>
       <input id="email" type="text" formControlName="email">
       <span class="error" *ngIf="heroForm.get('email')?.hasError('email')">
@@ -35,20 +35,17 @@
       </span> 
     </div>
 
-    <div class="block">
-      <h3>Address</h3>
-      <div class="block">
-        <label for="city">City </label>
-        <input id="city" type="text" formControlName="city">
-      </div>
-      <div class="block">
-        <label for="street">Street </label>
-        <input id="street" type="text" formControlName="street">
-      </div>
+    <div class="hero-form__block">
+      <label for="city">City </label>
+      <input id="city" type="text" formControlName="city">
+    </div>
+    <div class="hero-form__block">
+      <label for="street">Street </label>
+      <input id="street" type="text" formControlName="street">
     </div>
 
-    <button type="button" (click)="goBack()">back</button>
-    <button type="submit">save</button>
+    <button class="hero-form__button" type="button" (click)="goBack()">back</button>
+    <button class="hero-form__button" type="submit">save</button>
   </form>
 
 </div>

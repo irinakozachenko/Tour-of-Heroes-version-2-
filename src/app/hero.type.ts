@@ -9,8 +9,9 @@ export interface Hero {
   bithDate?: Date,
   gender?: HeroGenderEnum,
   email?: string,
+  checked?: boolean,
 
-  [index: string]: string | number | Date | undefined;
+  [index: string]: string | number | Date | boolean | undefined;
 }
 
 export interface PopupModel {

@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Hero, PopupModel } from '../hero.type';
 import { HeroService } from '../hero.service';
 import { DatePipe, NgClass, NgFor, NgComponentOutlet } from '@angular/common';
-import { ColumnConfigTable, ColumnTypeTable, ContextFilterOperationTable, ContextFilterTable, ContextFilterTypeTable, PagingTable, SearchValueTable, SortTable } from '../table.type';
+import { ColumnConfigTable, ColumnTypeTable, ContextFilterOperationTable, ContextFilterTable, ContextFilterTypeTable, PagingTable, SortTable } from '../table.type';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HeroGenderCell } from '../hero-gender-cell/hero-gender-cell';
 import { HeroPopupCell } from '../hero-popup-cell/hero-popup-cell.component';
 import { PopupService } from '../popup.service';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeroGenderEnum } from '../hero.const';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,7 +15,7 @@ import { UIRouterModule } from '@uirouter/angular';
 
 @Component({
   selector: 'app-heroes-on-table',
-  imports: [NgFor, NgClass, NgComponentOutlet, DatePipe, MatPaginatorModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, UIRouterModule],
+  imports: [NgFor, NgClass, NgComponentOutlet, DatePipe, MatPaginatorModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, UIRouterModule, FormsModule],
   templateUrl: './heroes-on-table.component.html',
   styleUrl: './heroes-on-table.component.less'
 })
@@ -148,5 +148,23 @@ export class HeroesOnTable implements OnInit {
       };
       worker.postMessage({contextFilter: this.contextFilterForm.value.filters, originalHeroes: this.originalHeroes});
     }
+  }
+
+  toggleAllRows(event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
+    this.paginatedHeroes.forEach((hero: Hero) => {
+      hero.checked = checked
+      const editHero: Hero = this.heroes.find((element: Hero) => element.id === hero.id) as Hero
+      editHero.checked = checked
+    })
+  }
+
+  toggleRowSelection(hero:Hero) {
+    const editHero: Hero = this.heroes.find((element: Hero) => element.id === hero.id) as Hero
+    editHero.checked = hero.checked
+  }
+
+  isAllCheckBoxChecked(): boolean {
+    return this.paginatedHeroes.every((hero: Hero) => hero.checked)
   }
 }

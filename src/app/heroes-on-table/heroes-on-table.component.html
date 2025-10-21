@@ -1,7 +1,8 @@
 <h2>Heroes of table</h2>
-<table>
+<table class="heroes-table">
     <thead [formGroup]="contextFilterForm">
-        <tr class="column-name-block">
+        <tr class="columns-block">
+            <th></th>
             <th *ngFor="let column of columnsConfig; index as i"
                 [ngClass]="[column.hidden ? 'hidden' : '']" >
                 <div [ngClass]="[column.name !== sortByColumn.column || column.notSortable ? '' : sortByColumn.desc ? 'sortDown' : 'sortUp']"
@@ -12,9 +13,10 @@
             <th>Action</th>
         </tr>
         <tr class="context-filter-block" formArrayName="filters">
+            <th><input type="checkbox"  [checked]="isAllCheckBoxChecked()" (change)="toggleAllRows($event)"/></th>
             <th *ngFor="let filter of contextFilters; index as i">
                 @if (!filter.hidden) {
-                    <div class="filter" [formGroupName]="i">
+                    <div [formGroupName]="i">
                         <input type="hidden" formControlName="columnName" [value]="filter.columnName">
                         <input type="hidden" formControlName="operation" [value]="filter.operation">
                         @if (filter.type === ContextFilterTypeTable.String) {
@@ -38,12 +40,13 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="rows">
         <tr *ngFor="let hero of paginatedHeroes">
+            <td><input type="checkbox" [(ngModel)]="hero.checked" (change)="toggleRowSelection(hero)"/></td>
             <td *ngFor="let column of columnsConfig"
                 [ngClass]="column.hidden ? 'hidden' : ''">
                 @if (column.type === ColumnTypeTable.Date) {
-                    {{ hero[column.name] | date : 'MM.dd.yyyy'}}
+                    {{ hero.bithDate | date : 'MM.dd.yyyy'}}
                 } @else if (column.type === ColumnTypeTable.Custom) {
                     <ng-template [ngComponentOutlet]="column.component" [ngComponentOutletInputs]="{ value: hero[column.name] }" />
                 } @else {
@@ -51,11 +54,11 @@
                 }
             </td>
             <td>
-                <button class="action" type="text" (click)="deleteHero(hero)">Delete</button>
-                 <button  class="action" type="text" uiSref="heroDetail" 
+                <button class="rows__action" type="text" (click)="deleteHero(hero)">Delete</button>
+                <button class="rows__action" type="text" uiSref="heroDetail" 
                     [uiParams]="{ id: hero.id }"  
                     uiSrefActive="active">
-                        <span class="name">Edit</span>
+                        <span>Edit</span>
                 </button>
             </td>
         </tr>
