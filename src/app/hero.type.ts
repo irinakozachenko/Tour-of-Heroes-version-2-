@@ -11,7 +11,7 @@ export interface Hero {
   email?: string,
   checked?: boolean,
 
-  [index: string]: string | number | Date | boolean | undefined;
+  [index: string]: any;
 }
 
 export interface PopupModel {
