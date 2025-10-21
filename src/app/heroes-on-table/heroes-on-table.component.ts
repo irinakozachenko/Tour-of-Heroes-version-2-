@@ -130,6 +130,7 @@ export class HeroesOnTable implements OnInit {
       if (result) {
         this.heroService.deleteHero(hero.id).subscribe(() => {
           this.heroes = this.heroes.filter(h => h.id !== hero.id);
+          this.originalHeroes = this.originalHeroes.filter(h => h.id !== hero.id);
           this.paging.totalItems = this.heroes.length
           this.goToPage(this.paging.currentPage)
         })
