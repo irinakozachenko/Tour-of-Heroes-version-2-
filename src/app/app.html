@@ -1,11 +1,12 @@
 <h1>{{title}}</h1>
+<div class="menu-block">
+    <a class="link" uiSref="dashboard" uiSrefActive="active">Dashboard</a>
+    <a class="link" uiSref="heroes" uiSrefActive="active">Heroes</a>
+    <a class="link" uiSref="testDirective" uiSrefActive="active">Test other elements </a>
+    <a class="link" uiSref="table" uiSrefActive="active">Table </a>
 
-<a class="link" uiSref="dashboard" uiSrefActive="active">Dashboard</a>
-<a class="link" uiSref="heroes" uiSrefActive="active">Heroes</a>
-<a class="link" uiSref="testDirective" uiSrefActive="active">Test other elements </a>
-<a class="link" uiSref="table" uiSrefActive="active">Table </a>
-
-<ui-view></ui-view>
+    <ui-view></ui-view>
+</div>
 
 <!--<nav>
     <a class="link" routerLink="/dashboard">Dashboard</a>
