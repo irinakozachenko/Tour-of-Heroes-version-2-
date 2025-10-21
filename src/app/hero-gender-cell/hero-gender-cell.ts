@@ -5,7 +5,7 @@ import { HeroGenderEnum } from '../hero.const';
   selector: 'app-hero-gender-cell',
   imports: [],
   templateUrl: './hero-gender-cell.html',
-  styleUrl: './hero-gender-cell.css'
+  styleUrl: './hero-gender-cell.less'
 })
 export class HeroGenderCell {
    value = input<string>("")

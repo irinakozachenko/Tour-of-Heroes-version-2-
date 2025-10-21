@@ -1,0 +1,85 @@
+@import '../variables.less';
+
+.heroes {
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: @identAverage;
+  margin: @identBig 0;
+  box-sizing: border-box;
+}
+
+.heroes li {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  background-color: @whiteGreyColor;
+  margin-bottom: @identAverage;
+}
+
+.heroes li:hover {
+  left: .1em;
+}
+
+.heroes a {
+  color: #333;
+  text-decoration: none;
+  margin: @identAverage;
+  border-radius: @indentSmall - 1;
+  display: block;
+  width: 100%;
+}
+
+.add-button {
+ padding: @identAverage @identAverage*2;
+ font-size: @identBig;
+ margin-bottom: @identBig*2;
+ margin-top: @identBig;
+}
+
+.add-button:hover {
+  color: @whiteColor;
+  background-color: @blueColor;
+}
+
+button.delete {
+  background-color: @whiteColor;
+  color:  @greyColor;
+  font-size: @fontSixeAverage;
+  margin: 0;
+  padding: 1px @identAverage 3px @identAverage;
+}
+
+button.delete:hover {
+  background-color: @greyColor;
+  color: @whiteColor;
+}
+
+.test-output-block {
+  border: 1px solid @greyColor;
+  margin-bottom: @identBig;
+  padding-left: @identBig;
+}
+
+.add-hero-block {
+  border: 1px solid @greyColor;
+  padding: @identBig;
+  padding-bottom: 0;
+
+  .control--firstName {
+    margin-bottom: 0;
+  }
+
+  .error--firstName {
+    display: block;
+  }
+}
+
+.error {
+  color: @errorColor;
+}

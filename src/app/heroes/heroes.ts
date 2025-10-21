@@ -9,7 +9,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   selector: 'app-heroes',
   imports: [NgFor, UIRouterModule, ReactiveFormsModule, NgIf],
   templateUrl: './heroes.html',
-  styleUrl: './heroes.css',
+  styleUrl: './heroes.less',
 })
 export class Heroes implements OnInit {
   heroes: Hero[] = [];

@@ -1,15 +1,15 @@
-/* HeroSearch private styles */
+@import '../variables.less';
 
 label {
   display: block;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  margin-bottom: .5rem;
+  font-weight: @fontWeightBold;
+  font-size: @fontSixeAverage;
+  margin-top: @identBig;
+  margin-bottom: @identAverage;
 
 }
 input {
-  padding: .5rem;
+  padding: @identAverage;
   width: 100%;
   max-width: 600px;
   box-sizing: border-box;
@@ -24,21 +24,21 @@ li {
   list-style-type: none;
 }
 .search-result li a {
-  border-bottom: 1px solid gray;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
+  border-bottom: 1px solid @borderColor;
+  border-left: 1px solid @borderColor;
+  border-right: 1px solid @borderColor;
   display: inline-block;
   width: 100%;
   max-width: 600px;
-  padding: .5rem;
+  padding: @identAverage;
   box-sizing: border-box;
   text-decoration: none;
-  color: black;
+  color: @blackColor;
 }
 
 .search-result li a:hover {
-  background-color: #435A60;
-  color: white;
+  background-color: @blueColor;
+  color: @whiteColor;
 }
 
 ul.search-result {

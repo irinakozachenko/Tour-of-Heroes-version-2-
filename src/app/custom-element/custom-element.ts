@@ -9,7 +9,7 @@ import { TestOutputProperty } from '../test-output-property/test-output-property
   selector: 'app-custom-element',
   imports: [HighlightDirective, ReversePipe, ReactiveFormsModule, TestOutputProperty],
   templateUrl: './custom-element.html',
-  styleUrl: './custom-element.css'
+  styleUrl: './custom-element.less'
 })
 export class CustomElement implements OnInit {
   color = "";

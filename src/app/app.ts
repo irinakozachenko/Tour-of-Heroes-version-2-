@@ -5,7 +5,7 @@ import { UIRouterModule } from "@uirouter/angular";
   selector: 'app-root',
   imports: [UIRouterModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.less'
 })
 export class App {
   title = 'Tour of Heroes';

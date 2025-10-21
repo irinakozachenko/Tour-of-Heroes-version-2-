@@ -11,7 +11,7 @@ import { ageRangeValidator } from '../ageRange.validator';
   selector: 'app-hero-detail',
   imports: [FormsModule, NgIf, UpperCasePipe, UIRouterModule, ReactiveFormsModule],
   templateUrl: './hero-detail.html',
-  styleUrl: './hero-detail.css',
+  styleUrl: './hero-detail.less',
 })
 export class HeroDetail implements OnInit{
   hero?: Hero | undefined;

@@ -9,7 +9,7 @@ import { AsyncPipe, NgFor } from '@angular/common';
   selector: 'app-hero-search',
   imports: [UIRouterModule, AsyncPipe, NgFor],
   templateUrl: './hero-search.html',
-  styleUrl: './hero-search.css'
+  styleUrl: './hero-search.less'
 })
 export class HeroSearch implements OnInit {
   heroes$!: Observable<Hero[]>;

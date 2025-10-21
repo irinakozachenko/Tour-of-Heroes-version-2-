@@ -9,7 +9,7 @@ import { UIRouterModule } from "@uirouter/angular";
   selector: 'app-dashboard',
   imports: [UIRouterModule, NgFor, HeroSearch],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css'
+  styleUrl: './dashboard.less'
 })
 
 export class Dashboard implements OnInit {
