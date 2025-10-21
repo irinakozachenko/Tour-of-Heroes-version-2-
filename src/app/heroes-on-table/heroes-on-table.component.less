@@ -1,8 +1,10 @@
+@import '../variables.less';
+
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid @borderColor;
   border-collapse: collapse;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: @indentSmall;
+  padding-right: @indentSmall;
 }
 
 .hidden {
@@ -18,18 +20,18 @@ table, th, td {
 }
 
 .sortDown:after {
-  top: 10px;
-  border-top-color: silver;
+  top: @identAverage;
+  border-top-color: @silverColor;
 }
 
 .sortUp:after {
-  bottom: 15px;
-  border-bottom-color: silver;
+  bottom: @identBig;
+  border-bottom-color: @silverColor;
 }
 
 .sortDown,
 .sortUp {
-  padding-right: 10px;
+  padding-right: @identAverage;
 }
 
 .paging {

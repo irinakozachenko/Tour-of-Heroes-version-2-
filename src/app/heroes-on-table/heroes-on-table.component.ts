@@ -17,7 +17,7 @@ import { UIRouterModule } from '@uirouter/angular';
   selector: 'app-heroes-on-table',
   imports: [NgFor, NgClass, NgComponentOutlet, DatePipe, MatPaginatorModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, UIRouterModule],
   templateUrl: './heroes-on-table.component.html',
-  styleUrl: './heroes-on-table.component.css'
+  styleUrl: './heroes-on-table.component.less'
 })
 export class HeroesOnTable implements OnInit {
   ColumnTypeTable = ColumnTypeTable
