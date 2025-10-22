@@ -20,10 +20,10 @@
     <div class="hero-form__block">
       <label for="gender">Gender </label>
       <label>
-        <input type="radio" formControlName="gender" value="Female"> {{ HeroGenderEnum.Female }}
+        <input type="radio" formControlName="gender" [value]="HeroGenderEnum.Female"> {{ HeroGenderEnum.Female }}
       </label>
       <label>
-        <input type="radio" formControlName="gender" value="Male"> {{ HeroGenderEnum.Male }}
+        <input type="radio" formControlName="gender" [value]="HeroGenderEnum.Male"> {{ HeroGenderEnum.Male }}
       </label>
     </div>
 

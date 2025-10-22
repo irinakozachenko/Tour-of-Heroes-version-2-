@@ -55,7 +55,9 @@
             </td>
             <td>
                 <button class="rows__action" type="text" (click)="deleteHero(hero)">Delete</button>
-                <button class="rows__action" type="text" uiSref="heroDetail" 
+                <button class="rows__action" 
+                    type="text" 
+                    uiSref="heroDetail" 
                     [uiParams]="{ id: hero.id }"  
                     uiSrefActive="active">
                         <span>Edit</span>
