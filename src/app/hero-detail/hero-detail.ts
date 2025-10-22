@@ -1,11 +1,9 @@
 import { Component, input, OnInit } from '@angular/core';
-import { Hero } from '../hero.type';
+import { Hero, HeroGenderEnum } from '../hero.type';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf, UpperCasePipe, Location } from '@angular/common';
 import { HeroService } from '../hero.service';
 import { UIRouterModule } from "@uirouter/angular";
-import { HeroGenderEnum } from '../hero.const';
-import { ageRangeValidator } from '../ageRange.validator';
 
 @Component({
   selector: 'app-hero-detail',

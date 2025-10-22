@@ -1,5 +1,3 @@
-import { HeroGenderEnum } from "./hero.const";
-
 export interface Hero {
   id: number;
   firstName: string;
@@ -18,4 +16,14 @@ export interface PopupModel {
   title?: string,
   content?: string,
   submitButton?: string
+}
+
+export enum HeroGenderEnum {
+    Female = 'Female', 
+    Male = 'Male'
+}
+
+export enum LetterCaseEnum {
+    Uppercase = 'Uppercase',
+    Lowercase = 'Lowercase'
 }

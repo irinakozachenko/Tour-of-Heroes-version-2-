@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HighlightDirective } from '../highlight.directive';
 import { ReversePipe } from '../reversePipe';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { LetterCaseEnum } from '../hero.const';
 import { TestOutputProperty } from '../test-output-property/test-output-property';
+import { LetterCaseEnum } from '../hero.type';
 
 @Component({
   selector: 'app-custom-element',

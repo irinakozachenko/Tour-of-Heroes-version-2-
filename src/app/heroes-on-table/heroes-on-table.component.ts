@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero, PopupModel } from '../hero.type';
+import { Hero, HeroGenderEnum, PopupModel } from '../hero.type';
 import { HeroService } from '../hero.service';
 import { DatePipe, NgClass, NgFor, NgComponentOutlet } from '@angular/common';
 import { ColumnConfigTable, ColumnTypeTable, ContextFilterOperationTable, ContextFilterTable, ContextFilterTypeTable, PagingTable, SortTable } from '../table.type';
@@ -8,7 +8,6 @@ import { HeroGenderCell } from '../hero-gender-cell/hero-gender-cell';
 import { HeroPopupCell } from '../hero-popup-cell/hero-popup-cell.component';
 import { PopupService } from '../popup.service';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeroGenderEnum } from '../hero.const';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UIRouterModule } from '@uirouter/angular';

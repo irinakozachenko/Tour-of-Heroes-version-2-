@@ -1,5 +1,4 @@
-import { Hero } from './hero.type';
-import { HeroGenderEnum } from './hero.const';
+import { Hero, HeroGenderEnum } from './hero.type';
 
 export const HEROES: Hero[] = [
   {

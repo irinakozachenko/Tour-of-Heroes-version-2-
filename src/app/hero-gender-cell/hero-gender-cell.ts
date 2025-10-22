@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { HeroGenderEnum } from '../hero.const';
+import { HeroGenderEnum } from '../hero.type';
 
 @Component({
   selector: 'app-hero-gender-cell',
