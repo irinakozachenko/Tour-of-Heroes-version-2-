@@ -46,7 +46,7 @@
             <td *ngFor="let column of columnsConfig"
                 [ngClass]="column.hidden ? 'hidden' : ''">
                 @if (column.type === ColumnTypeTable.Date) {
-                    {{ hero[column.name] | date : 'MM.dd.yyyy'}}
+                    {{ getDate(hero[column.name]) | date : 'MM.dd.yyyy'}}
                 } @else if (column.type === ColumnTypeTable.Custom) {
                     <ng-template [ngComponentOutlet]="column.component" [ngComponentOutletInputs]="{ value: hero[column.name] }" />
                 } @else {

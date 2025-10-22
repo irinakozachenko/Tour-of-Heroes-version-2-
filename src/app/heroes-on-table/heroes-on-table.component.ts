@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero, HeroGenderEnum, PopupModel } from '../hero.type';
+import { Hero, HeroGenderEnum, HeroKey, PopupModel } from '../hero.type';
 import { HeroService } from '../hero.service';
 import { DatePipe, NgClass, NgFor, NgComponentOutlet } from '@angular/common';
 import { ColumnConfigTable, ColumnTypeTable, ContextFilterOperationTable, ContextFilterTable, ContextFilterTypeTable, PagingTable, SortTable } from '../table.type';
@@ -166,5 +166,9 @@ export class HeroesOnTable implements OnInit {
 
   isAllCheckBoxChecked(): boolean {
     return this.paginatedHeroes.length > 0 && this.paginatedHeroes.every((hero: Hero) => hero.checked)
+  }
+
+  getDate(date: HeroKey): Date {
+    return date as Date
   }
 }

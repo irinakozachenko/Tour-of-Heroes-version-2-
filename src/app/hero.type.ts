@@ -9,8 +9,9 @@ export interface Hero {
   email?: string,
   checked?: boolean,
 
-  [index: string]: any;
+  [index: string]: HeroKey
 }
+export type HeroKey =  string | number | Date | boolean | undefined
 
 export interface PopupModel {
   title?: string,
